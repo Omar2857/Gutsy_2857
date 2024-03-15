@@ -1,53 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zoek Getal</title>
-</head>
-<body>
     <script>
-        // Functie om een array van opgegeven lengte te maken met willekeurige getallen
-        function createArray(length) {
-            return Array.from({length}, () => Math.floor(Math.random() * 100));
+        function new Array(length) {
+            var arr = new Array(length || 0);
+            var i = length;
+            if (arguments.length > 1) {
+                var args = Array.prototype.slice.call(arguments, 1);
+                while (i--) arr[length - 1 - i] = createArray.apply(this, args);
+            }
+            return arr;
         }
 
-        // Hoofdfunctionaliteit van het programma
         function main() {
+            // Met dit programma wordt er in een array gekeken of het getal gevonden is, dan wordt er aangegeven op welke plek het getal staat. Als het niet wordt gevonden, geeft het programma dit ook aan.
             var zoekGetal, i;
-            // Genereer een array met 10 willekeurige getallen
             var getallenRij = createArray(10);
 
-            // Initialiseer een for-lus om elk element in de array opnieuw te genereren
             for (i = 0; i <= 9; i++) {
                 getallenRij[i] = Math.floor(Math.random() * 100);
             }
-
-            // Vraag de gebruiker om het getal dat ze willen zoeken
-            alert("Welk getal wil je zoeken:");
-            zoekGetal = Number(prompt('Voer een waarde in voor zoekGetal'));
-
-            // Initialiseer een while-lus om het getal te zoeken in de array
+            window.alert("Welk getal wil je zoeken: ");
+            zoekGetal = Number(prompt('Voer een waarde voor zoekGetal in'));
             i = 0;
-            while (getallenRij[i] !== zoekGetal && i < 9) {
+
+            // Wat moet er in de WHILE-lus komen om het algoritme te laten werken?
+            // 
+            // Eerder was de variabele getallenRij gedeclareerd samen met zoekgetal. Deze zijn belangrijk voor een werkende lus.
+            while (getallenRij[i] != zoekGetal && i < 9) {
                 i = i + 1;
             }
-
-            // Controleer of het getal is gevonden en toon het resultaat aan de gebruiker
-            if (getallenRij[9] === zoekGetal) {
-                alert(zoekGetal + " staat op plek " + i);
+            if (getallenRij[9] == zoekGetal) {
+                window.alert(zoekGetal.toString() + " staat op plek " + i);
             }
-
-            // Als het getal niet op de laatste positie staat, toon het resultaat
-            if (i === 9) {
-                alert("Getal niet gevonden.");
+            if (i == 9) {
+                window.alert("Getal niet gevonden.");
             } else {
-                alert(zoekGetal + " staat op plek " + i);
+                window.alert(zoekGetal.toString() + " staat op plek " + i);
             }
         }
-
-        // Roep de hoofdfunctie aan wanneer de pagina laadt
-        main(); 
     </script>
+</head>
+<body onload="main()">
+    <h1>Zoek Getal</h1>
 </body>
 </html>
